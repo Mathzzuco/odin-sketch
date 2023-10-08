@@ -1,0 +1,13 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.draw-box {
+  height: 100px;
+  width: 100px;
+  border: solid 1px black;
+  flex-shrink: 0;
+}

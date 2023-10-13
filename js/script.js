@@ -1,34 +1,41 @@
 const grid = document.querySelector(".grid");
+const gridSize = document.querySelector(".grid").clientHeight;
+const squaresPerSide = 16;
+const numOfIterations = squaresPerSide * squaresPerSide;
 
-const userInput = 16;
-const numOfIterations = userInput * userInput;
-const gridSize = 600;
-const squareSize = gridSize / userInput;
+// if userInput <= 0 then reset grid with same size
 
-for (x = 0; x < numOfIterations; x++) {
-  let drawBox = document.createElement("div");
-  drawBox.classList.add("draw-box");
-
-  drawBox.style.width = squareSize + "px";
-  drawBox.style.height = squareSize + "px";
-
-  grid.appendChild(drawBox);
-  let drawBoxAll = document.querySelectorAll(".draw-box");
-  drawBoxAll[x].addEventListener("mouseover", mouseOver);
-  drawBoxAll[x].addEventListener("mouseout", mouseOut);
-}
-
-// drawBox = document.querySelectorAll(".draw-box");
-
-// document.querySelector(".grid div").addEventListener("mouseover", mouseOver);
-// document.querySelector(".grid div").addEventListener("mouseout", mouseOut);
+createGrid();
 
 function mouseOver(e) {
   const element = e.target;
   element.style.background = "red";
 }
 
-function mouseOut(e) {
-  const element = e.target;
-  element.style.background = "white";
+function createGrid() {
+  for (x = 0; x < numOfIterations; x++) {
+    const squareSize = gridSize / squaresPerSide;
+
+    const drawBox = document.createElement("div");
+    drawBox.classList.add("draw-box");
+
+    drawBox.style.width = squareSize + "px";
+    drawBox.style.height = squareSize + "px";
+
+    grid.appendChild(drawBox);
+
+    const drawBoxAll = document.querySelectorAll(".draw-box");
+    drawBoxAll[x].addEventListener("mouseover", mouseOver);
+  }
+}
+
+function resetGrid() {
+  const userInput = parseInt(prompt());
+  if (userInput >= 1 && userInput <= 100) {
+    const drawBoxAll = document.querySelectorAll(".draw-box");
+    drawBoxAll.forEach((drawBox) => {
+      drawBox.remove();
+    });
+    createGrid();
+  }
 }

@@ -1,12 +1,25 @@
 let squaresPerSide = 16;
 let isGridBlocked = false;
 
+function generateRandomColor() {
+  const random1 = Math.floor(Math.random() * 256);
+  const random2 = Math.floor(Math.random() * 256);
+  const random3 = Math.floor(Math.random() * 256);
+
+  return {
+    red: random1,
+    green: random2,
+    blue: random3,
+  };
+}
+
 createGrid();
 
 function mouseOver(e) {
   if (isGridBlocked) return;
   const element = e.target;
-  element.style.background = "red";
+  const randomColor = generateRandomColor();
+  element.style.background = `rgb(${randomColor.red}, ${randomColor.green}, ${randomColor.blue})`;
 }
 
 function unblockGrid() {

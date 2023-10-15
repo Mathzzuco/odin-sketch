@@ -1,5 +1,5 @@
 body {
-  --grid-width: min(85vh, 85vw);
+  --grid-width: min(80vh, 80vw);
   background-color: #bbb7b7;
 }
 
@@ -10,7 +10,7 @@ body {
   justify-content: center;
   width: var(--grid-width);
   margin: 0 auto;
-  gap: 10px;
+  gap: 30px;
 }
 
 .buttons {
@@ -31,6 +31,11 @@ body {
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.8;
 }
 
 .grid {
